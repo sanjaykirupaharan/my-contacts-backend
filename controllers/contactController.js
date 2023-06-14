@@ -80,12 +80,12 @@ const deleteContact = asyncHandler(async (req, res) => {
         throw new Error("This user doesn't have permission to delete other contacts")
     }
 
-    await Contact.findByIdAndDelete(req.params.id)
+    await Contact.findByIdAndDelete({_id: req.params.id})
     res.status(200).json(contact);
 })
 
 module.exports = {
-    getContacts,
+    getContacts, 
     getContact,
     createContact,
     updateContact,
